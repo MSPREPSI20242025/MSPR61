@@ -15,3 +15,7 @@ To filter the data you need to run the main file
   python main.py
 ```
 
+To install the dependencies
+```bash
+  pip install -r requirements.txt
+```
