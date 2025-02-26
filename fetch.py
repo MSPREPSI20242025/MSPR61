@@ -3,7 +3,7 @@ import subprocess
 import zipfile
 
 # Dossier de destination des fichiers
-DOWNLOAD_PATH = os.path.expanduser("/downloads")
+DOWNLOAD_PATH = os.path.expanduser("./downloads")
 
 # Mapping des fichiers ZIP et des dossiers de destination
 datasets = {
