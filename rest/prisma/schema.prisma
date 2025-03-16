@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CovidData {
+  id              Int      @id @default(autoincrement())
+  date            String
+  country         String
+  total_cases     Int
+  new_cases       Int
+  active_cases    Int
+  total_deaths    Int
+  new_deaths      Int
+  total_recovered Int
+  daily_recovered Int
+
+  @@map("covid_data")
+  @@index([country, date])
+}
+
+model MpoxData {
+  id           Int      @id @default(autoincrement())
+  date         String
+  country      String
+  total_cases  Int
+  new_cases    Int
+  total_deaths Int
+  new_deaths   Int
+
+  @@map("mpox_data")
+  @@index([country, date])
+}

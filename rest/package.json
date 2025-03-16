@@ -5,17 +5,19 @@
     "main": "src/index.ts",
     "scripts": {
         "build": "npx tsc",
-        "start": "node dist/index.js",
-        "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+        "start": "node build/index.js",
+        "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\""
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
     "dependencies": {
+        "@prisma/client": "^6.5.0",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
         "fs": "0.0.1-security",
+        "js-yaml": "^4.1.0",
         "uuid": "^11.1.0"
     },
     "devDependencies": {
@@ -24,6 +26,17 @@
         "@types/uuid": "^10.0.0",
         "concurrently": "^9.1.2",
         "nodemon": "^3.1.9",
+        "prisma": "^6.5.0",
+        "tsx": "^4.19.3",
         "typescript": "^5.8.2"
+    },
+    "pnpm": {
+        "ignoredBuiltDependencies": [
+            "@prisma/client"
+        ],
+        "onlyBuiltDependencies": [
+            "@prisma/client",
+            "@scarf/scarf"
+        ]
     }
 }
