@@ -1,0 +1,32 @@
+input: ./docs
+output: .retype
+url: "" # Add your URL here, like https://api-docs.yourdomain.com
+
+branding:
+    title: MSPR 6.1
+    label: v1.0
+
+links:
+    - text: GitHub
+      link: https://github.com/ghoostyy/mspr61
+    - text: API Docs
+      link: /rest/api-docs # TODO: add the real api docs link here
+
+meta:
+    title: " | MSPR 61"
+    description: "Documentation for the COVID-19 and MPOX Data API."
+
+poweredByRetype: true
+
+editor:
+    enabled: false
+
+outbound:
+    workers: true
+
+categories:
+    - group: REST API
+      collapsed: false
+      icon: server
+      pages:
+          - rest/**/*
