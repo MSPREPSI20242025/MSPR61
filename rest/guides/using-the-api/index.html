@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.795540864415">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.795541851162">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Using the API | MSPR 61</title>
-    <meta name="title" content="Using the API | MSPR 61">
-    <meta name="description" content="This guide demonstrates how to interact with the COVID and MPOX Data API using various programming languages and tools.">
+    <title>Utilisation de l&#39;API | MSPR 61</title>
+    <meta name="title" content="Utilisation de l'API | MSPR 61">
+    <meta name="description" content="Ce guide montre comment interagir avec l'API de données COVID et MPOX en utilisant différents langages de programmation et outils.">
 
     <!-- Canonical -->
     <link rel="canonical" href="/rest/guides/using-the-api/">
@@ -19,23 +19,23 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="/rest/guides/using-the-api/">
-    <meta property="og:title" content="Using the API | MSPR 61">
-    <meta property="og:description" content="This guide demonstrates how to interact with the COVID and MPOX Data API using various programming languages and tools.">
+    <meta property="og:title" content="Utilisation de l'API | MSPR 61">
+    <meta property="og:description" content="Ce guide montre comment interagir avec l'API de données COVID et MPOX en utilisant différents langages de programmation et outils.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/rest/guides/using-the-api/">
-    <meta property="twitter:title" content="Using the API | MSPR 61">
-    <meta property="twitter:description" content="This guide demonstrates how to interact with the COVID and MPOX Data API using various programming languages and tools.">
+    <meta property="twitter:title" content="Utilisation de l'API | MSPR 61">
+    <meta property="twitter:description" content="Ce guide montre comment interagir avec l'API de données COVID et MPOX en utilisant différents langages de programmation et outils.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=3.6.0.795540864415" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.6.0.795541851162" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.795540864415" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.795541851162" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.795540864415" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.795540864415" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.795541851162" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.795541851162" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -170,70 +170,70 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="using-the-api" class="break-words">
+<doc-anchor-target id="utilisation-de-lapi" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#using-the-api">#</doc-anchor-trigger>
-        <span>Using the API</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#utilisation-de-lapi">#</doc-anchor-trigger>
+        <span>Utilisation de l&#x27;API</span>
     </h1>
 </doc-anchor-target>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350 items-center">
     <div>In&nbsp;</div>
-    <div><a href="../../../categories/rest-api/">REST API</a></div>
+    <div><a href="../../../categories/api-rest/">API REST</a></div>
 </div>
 
-<p>This guide demonstrates how to interact with the COVID and MPOX Data API using various programming languages and tools.</p>
-<doc-anchor-target id="basic-usage-patterns">
+<p>Ce guide montre comment interagir avec l&#x27;API de données COVID et MPOX en utilisant différents langages de programmation et outils.</p>
+<doc-anchor-target id="modèles-dutilisation-de-base">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#basic-usage-patterns">#</doc-anchor-trigger>
-        <span>Basic Usage Patterns</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#modèles-dutilisation-de-base">#</doc-anchor-trigger>
+        <span>Modèles d&#x27;Utilisation de Base</span>
     </h2>
 </doc-anchor-target>
-<p>Regardless of the language or library you use, working with the API follows these basic patterns:</p>
+<p>Quel que soit le langage ou la bibliothèque que vous utilisez, l&#x27;utilisation de l&#x27;API suit ces modèles de base :</p>
 <ol>
-<li>For public endpoints, make a direct GET request</li>
-<li>For protected endpoints, include the bearer token in the Authorization header</li>
-<li>Parse the JSON response</li>
-<li>Handle any errors</li>
+<li>Pour les points d&#x27;accès publics, faites une requête GET directe</li>
+<li>Pour les points d&#x27;accès protégés, incluez le jeton bearer dans l&#x27;en-tête Authorization</li>
+<li>Analysez la réponse JSON</li>
+<li>Gérez les erreurs éventuelles</li>
 </ol>
-<doc-anchor-target id="example-fetching-covid-data-for-a-country">
+<doc-anchor-target id="exemple--récupération-des-données-covid-pour-un-pays">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#example-fetching-covid-data-for-a-country">#</doc-anchor-trigger>
-        <span>Example: Fetching COVID Data for a Country</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exemple--récupération-des-données-covid-pour-un-pays">#</doc-anchor-trigger>
+        <span>Exemple : Récupération des Données COVID pour un Pays</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="using-curl">
+<doc-anchor-target id="utilisation-de-curl">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#using-curl">#</doc-anchor-trigger>
-        <span>Using curl</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#utilisation-de-curl">#</doc-anchor-trigger>
+        <span>Utilisation de curl</span>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Public endpoint - no authentication required
+<pre class="language-bash"><code v-pre class="language-bash"># Point d'accès public - pas d'authentification requise
 curl -X GET &quot;https://api.yourdomain.com/api/covid/public/country/United%20States&quot;
 
-# Protected endpoint - authentication required
+# Point d'accès protégé - authentification requise
 curl -X GET &quot;https://api.yourdomain.com/api/covid/data?country=United%20States&quot; \
   -H &quot;Authorization: Bearer your-api-token&quot;</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="using-javascript-fetch">
+<doc-anchor-target id="utilisation-de-javascript-fetch">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#using-javascript-fetch">#</doc-anchor-trigger>
-        <span>Using JavaScript (fetch)</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#utilisation-de-javascript-fetch">#</doc-anchor-trigger>
+        <span>Utilisation de JavaScript (fetch)</span>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">// Public endpoint
+<pre class="language-javascript"><code v-pre class="language-javascript">// Point d'accès public
 fetch('https://api.yourdomain.com/api/covid/public/country/United%20States')
   .then(response =&gt; {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
     }
     return response.json();
   })
   .then(data =&gt; console.log(data))
-  .catch(error =&gt; console.error('Error:', error));
+  .catch(error =&gt; console.error('Erreur:', error));
 
-// Protected endpoint
+// Point d'accès protégé
 fetch('https://api.yourdomain.com/api/covid/data?country=United%20States', {
   headers: {
     'Authorization': 'Bearer your-api-token'
@@ -241,31 +241,31 @@ fetch('https://api.yourdomain.com/api/covid/data?country=United%20States', {
 })
   .then(response =&gt; {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
     }
     return response.json();
   })
   .then(data =&gt; console.log(data))
-  .catch(error =&gt; console.error('Error:', error));</code></pre>
+  .catch(error =&gt; console.error('Erreur:', error));</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="using-python-requests">
+<doc-anchor-target id="utilisation-de-python-requests">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#using-python-requests">#</doc-anchor-trigger>
-        <span>Using Python (requests)</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#utilisation-de-python-requests">#</doc-anchor-trigger>
+        <span>Utilisation de Python (requests)</span>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-python"><code v-pre class="language-python">import requests
 
-# Public endpoint
+# Point d'accès public
 response = requests.get('https://api.yourdomain.com/api/covid/public/country/United%20States')
 if response.status_code == 200:
     data = response.json()
     print(data)
 else:
-    print(f&quot;Error: {response.status_code}&quot;)
+    print(f&quot;Erreur : {response.status_code}&quot;)
 
-# Protected endpoint
+# Point d'accès protégé
 headers = {'Authorization': 'Bearer your-api-token'}
 response = requests.get(
     'https://api.yourdomain.com/api/covid/data',
@@ -276,18 +276,18 @@ if response.status_code == 200:
     data = response.json()
     print(data)
 else:
-    print(f&quot;Error: {response.status_code}&quot;)</code></pre>
+    print(f&quot;Erreur : {response.status_code}&quot;)</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="creating-a-new-record">
+<doc-anchor-target id="création-dun-nouveau-enregistrement">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-a-new-record">#</doc-anchor-trigger>
-        <span>Creating a New Record</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#création-dun-nouveau-enregistrement">#</doc-anchor-trigger>
+        <span>Création d&#x27;un Nouveau Enregistrement</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="using-javascript-fetch-1">
+<doc-anchor-target id="utilisation-de-javascript-fetch-1">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#using-javascript-fetch-1">#</doc-anchor-trigger>
-        <span>Using JavaScript (fetch)</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#utilisation-de-javascript-fetch-1">#</doc-anchor-trigger>
+        <span>Utilisation de JavaScript (fetch)</span>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -313,17 +313,17 @@ fetch('https://api.yourdomain.com/api/covid/data', {
 })
   .then(response =&gt; {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
     }
     return response.json();
   })
   .then(data =&gt; console.log(data))
-  .catch(error =&gt; console.error('Error:', error));</code></pre>
+  .catch(error =&gt; console.error('Erreur:', error));</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="using-python-requests-1">
+<doc-anchor-target id="utilisation-de-python-requests-1">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#using-python-requests-1">#</doc-anchor-trigger>
-        <span>Using Python (requests)</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#utilisation-de-python-requests-1">#</doc-anchor-trigger>
+        <span>Utilisation de Python (requests)</span>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -357,23 +357,23 @@ if response.status_code == 201:
     data = response.json()
     print(data)
 else:
-    print(f&quot;Error: {response.status_code}&quot;)
+    print(f&quot;Erreur : {response.status_code}&quot;)
     print(response.text)</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="building-a-simple-dashboard">
+<doc-anchor-target id="création-dun-tableau-de-bord-simple">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#building-a-simple-dashboard">#</doc-anchor-trigger>
-        <span>Building a Simple Dashboard</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#création-dun-tableau-de-bord-simple">#</doc-anchor-trigger>
+        <span>Création d&#x27;un Tableau de Bord Simple</span>
     </h2>
 </doc-anchor-target>
-<p>Here&#x27;s a complete example of building a simple COVID dashboard using HTML, CSS, and JavaScript:</p>
+<p>Voici un exemple complet de création d&#x27;un tableau de bord COVID simple utilisant HTML, CSS et JavaScript :</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-markup"><code v-pre class="language-markup">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+&lt;html lang=&quot;fr&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;COVID-19 Dashboard&lt;/title&gt;
+    &lt;title&gt;Tableau de Bord COVID-19&lt;/title&gt;
     &lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;&gt;&lt;/script&gt;
     &lt;style&gt;
         body {
@@ -422,30 +422,30 @@ else:
 &lt;/head&gt;
 &lt;body&gt;
     &lt;div class=&quot;container&quot;&gt;
-        &lt;h1&gt;COVID-19 Dashboard&lt;/h1&gt;
+        &lt;h1&gt;Tableau de Bord COVID-19&lt;/h1&gt;
         
         &lt;div class=&quot;card&quot;&gt;
-            &lt;h2&gt;Global Totals&lt;/h2&gt;
+            &lt;h2&gt;Totaux Mondiaux&lt;/h2&gt;
             &lt;div class=&quot;stats&quot; id=&quot;global-stats&quot;&gt;
                 &lt;div class=&quot;stat-card&quot;&gt;
-                    &lt;h3&gt;Total Cases&lt;/h3&gt;
-                    &lt;div class=&quot;number&quot; id=&quot;total-cases&quot;&gt;Loading...&lt;/div&gt;
+                    &lt;h3&gt;Total des Cas&lt;/h3&gt;
+                    &lt;div class=&quot;number&quot; id=&quot;total-cases&quot;&gt;Chargement...&lt;/div&gt;
                 &lt;/div&gt;
                 &lt;div class=&quot;stat-card&quot;&gt;
-                    &lt;h3&gt;Total Deaths&lt;/h3&gt;
-                    &lt;div class=&quot;number&quot; id=&quot;total-deaths&quot;&gt;Loading...&lt;/div&gt;
+                    &lt;h3&gt;Total des Décès&lt;/h3&gt;
+                    &lt;div class=&quot;number&quot; id=&quot;total-deaths&quot;&gt;Chargement...&lt;/div&gt;
                 &lt;/div&gt;
                 &lt;div class=&quot;stat-card&quot;&gt;
-                    &lt;h3&gt;Total Recovered&lt;/h3&gt;
-                    &lt;div class=&quot;number&quot; id=&quot;total-recovered&quot;&gt;Loading...&lt;/div&gt;
+                    &lt;h3&gt;Total des Guérisons&lt;/h3&gt;
+                    &lt;div class=&quot;number&quot; id=&quot;total-recovered&quot;&gt;Chargement...&lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
         
         &lt;div class=&quot;card&quot;&gt;
-            &lt;h2&gt;Country Data&lt;/h2&gt;
+            &lt;h2&gt;Données par Pays&lt;/h2&gt;
             &lt;select id=&quot;country-selector&quot;&gt;
-                &lt;option value=&quot;&quot;&gt;Select a country&lt;/option&gt;
+                &lt;option value=&quot;&quot;&gt;Sélectionnez un pays&lt;/option&gt;
             &lt;/select&gt;
             &lt;div class=&quot;chart-container&quot;&gt;
                 &lt;canvas id=&quot;cases-chart&quot;&gt;&lt;/canvas&gt;
@@ -718,6 +718,6 @@ fetchData('https://api.yourdomain.com/api/covid/public/latest')
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Using the API", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Utilisation de l'API", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
