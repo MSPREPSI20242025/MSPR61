@@ -179,7 +179,7 @@ router.put(
             } = req.body;
 
             await prisma.covidData.update({
-                where: { id },
+                where: { index: id },
                 data: {
                     date,
                     country,
@@ -217,7 +217,7 @@ router.put(
             } = req.body;
 
             await prisma.mpoxData.update({
-                where: { id },
+                where: { index: id },
                 data: {
                     date,
                     country,
@@ -244,7 +244,7 @@ router.delete(
             const id = parseInt(req.params.id);
 
             await prisma.covidData.delete({
-                where: { id },
+                where: { index: id },
             });
 
             res.json({ success: true, message: "Data deleted successfully" });
@@ -263,7 +263,7 @@ router.delete(
             const id = parseInt(req.params.id);
 
             await prisma.mpoxData.delete({
-                where: { id },
+                where: { index: id },
             });
 
             res.json({ success: true, message: "Data deleted successfully" });

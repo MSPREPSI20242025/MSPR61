@@ -1,6 +1,6 @@
 import pandas as pd
 import psycopg2
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 import os
 
@@ -17,7 +17,7 @@ DB_PORT = os.getenv("DB_PORT", "5432")
 # Créer une connexion à PostgreSQL
 print("Connecting to PostgreSQL...")
 engine = create_engine(f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
-engine.connect()
+connection = engine.connect()
 
 print("Loading data...")
 # Charger les fichiers CSV
@@ -31,11 +31,12 @@ TABLE_MPOX = "mpox_data"
 
 print("Importing data...")
 # Charger les données COVID (data1 et data2)
-data1.to_sql(TABLE_COVID, engine, if_exists='replace', index=False)
-data2.to_sql(TABLE_COVID, engine, if_exists='replace', index=False)
+data1.to_sql(TABLE_COVID, engine, if_exists='replace', index=True)
+data2.to_sql(TABLE_COVID, engine, if_exists='replace', index=True)
 
 # Charger les données MPOX (data3)
-data3.to_sql(TABLE_MPOX, engine, if_exists='append', index=False)
+data3.to_sql(TABLE_MPOX, engine, if_exists='replace', index=True)
 
 print("Data imported successfully!")
+connection.close()
 engine.dispose()

@@ -36,7 +36,10 @@
         ],
         "onlyBuiltDependencies": [
             "@prisma/client",
-            "@scarf/scarf"
+            "@prisma/engines",
+            "@scarf/scarf",
+            "esbuild",
+            "prisma"
         ]
     }
 }
