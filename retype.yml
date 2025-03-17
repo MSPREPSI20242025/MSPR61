@@ -4,7 +4,6 @@ url: "" # Add your URL here, like https://api-docs.yourdomain.com
 
 branding:
     title: MSPR 6.1
-    label: v1.0
 
 links:
     - text: GitHub
