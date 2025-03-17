@@ -1,3 +1,10 @@
+---
+label: Data Processing
+icon: checklist
+order: 100
+category: Documentation
+---
+
 # Documentation du Processus de Collecte et de Nettoyage des Données
 
 ## 1. Introduction
