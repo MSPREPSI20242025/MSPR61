@@ -1,5 +1,5 @@
 ---
-label: Introduction
+label: Rest API
 icon: home
 order: 100
 category: REST API
