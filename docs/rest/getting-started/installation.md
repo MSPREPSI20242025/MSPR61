@@ -2,40 +2,40 @@
 label: Installation
 icon: download
 order: 100
-category: REST API
+category: API REST
 ---
 
-# Installation Guide
+# Guide d'Installation
 
-This guide will walk you through the process of setting up the COVID and MPOX Data API on your local environment.
+Ce guide vous guidera à travers le processus de configuration de l'API de données COVID et MPOX sur votre environnement local.
 
-## Prerequisites
+## Prérequis
 
-Before you begin, ensure you have the following installed:
+Avant de commencer, assurez-vous d'avoir installé :
 
-- Node.js (v14 or later)
-- npm (v6 or later)
-- PostgreSQL (v12 or later)
+- Node.js (v14 ou supérieur)
+- npm (v6 ou supérieur)
+- PostgreSQL (v12 ou supérieur)
 - Git
 
-## Installation Steps
+## Étapes d'Installation
 
-### 1. Clone the Repository
+### 1. Cloner le Dépôt
 
 ```bash
 git clone https://github.com/yourusername/covid-mpox-api.git
 cd covid-mpox-api
 ```
 
-### 2. Install Dependencies
+### 2. Installer les Dépendances
 
 ```bash
 npm install
 ```
 
-### 3. Configure Environment Variables
+### 3. Configurer les Variables d'Environnement
 
-Create a `.env` file in the project root with the following variables:
+Créez un fichier `.env` à la racine du projet avec les variables suivantes :
 
 ```
 DATABASE_URL="postgresql://username:password@localhost:5432/your_database"
@@ -43,84 +43,84 @@ API_TOKEN="your-super-secure-api-token"
 PORT=3000
 ```
 
-Replace `username`, `password`, `your_database`, and `your-super-secure-api-token` with your specific values.
+Remplacez `username`, `password`, `your_database`, et `your-super-secure-api-token` par vos valeurs spécifiques.
 
-### 4. Set Up the Database
+### 4. Configurer la Base de Données
 
-Create a PostgreSQL database with the name you specified in the DATABASE_URL:
+Créez une base de données PostgreSQL avec le nom que vous avez spécifié dans DATABASE_URL :
 
 ```bash
 createdb your_database
 ```
 
-Then run the Prisma migrations to set up the schema:
+Puis exécutez les migrations Prisma pour configurer le schéma :
 
 ```bash
 npx prisma migrate dev --name init
 ```
 
-### 5. Build the Project
+### 5. Compiler le Projet
 
 ```bash
 npm run build
 ```
 
-### 6. Start the Server
+### 6. Démarrer le Serveur
 
-For development:
+Pour le développement :
 
 ```bash
 npm run dev
 ```
 
-For production:
+Pour la production :
 
 ```bash
 npm start
 ```
 
-The API server will start at `http://localhost:3000` (or whatever port you specified in the .env file).
+Le serveur API démarrera sur `http://localhost:3000` (ou le port que vous avez spécifié dans le fichier .env).
 
-## Verifying the Installation
+## Vérifier l'Installation
 
-To verify that the API is running correctly, make a request to a public endpoint:
+Pour vérifier que l'API fonctionne correctement, faites une requête vers un point d'accès public :
 
 ```bash
 curl http://localhost:3000/api/covid/public/latest
 ```
 
-You should receive a JSON response with COVID data.
+Vous devriez recevoir une réponse JSON avec les données COVID.
 
-## Docker Installation (Alternative)
+## Installation Docker (Alternative)
 
-If you prefer using Docker, you can use the following commands:
+Si vous préférez utiliser Docker, vous pouvez utiliser les commandes suivantes :
 
 ```bash
-# Build the Docker image
+# Construire l'image Docker
 docker build -t covid-mpox-api .
 
-# Run the container
+# Exécuter le conteneur
 docker run -p 3000:3000 --env-file .env covid-mpox-api
 ```
 
-## Troubleshooting
+## Dépannage
 
-### Database Connection Issues
+### Problèmes de Connexion à la Base de Données
 
-If you encounter database connection issues:
+Si vous rencontrez des problèmes de connexion à la base de données :
 
-1. Verify that your PostgreSQL server is running
-2. Check the DATABASE_URL in your .env file
-3. Ensure your PostgreSQL user has the necessary permissions
+1. Vérifiez que votre serveur PostgreSQL est en cours d'exécution
+2. Vérifiez l'URL de la base de données dans votre fichier .env
+3. Assurez-vous que votre utilisateur PostgreSQL a les permissions nécessaires
 
-### Port Already in Use
+### Port Déjà Utilisé
 
-If the port is already in use:
+Si le port est déjà utilisé :
 
-1. Change the PORT value in your .env file
-2. Stop any other services using the same port
+1. Changez la valeur du PORT dans votre fichier .env
+2. Arrêtez tout autre service utilisant le même port
 
-## Next Steps
+## Prochaines Étapes
 
-- [Learn about authentication](/rest/getting-started/authentication.md)
-- [Explore the API reference](/rest/api/overview.md)
+- [En savoir plus sur l'authentification](/rest/getting-started/authentication.md)
+- [Explorer la référence API](/rest/api/overview.md)

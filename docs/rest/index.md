@@ -1,58 +1,58 @@
 ---
-label: Rest API
+label: API REST
 icon: home
 order: 100
-category: REST API
+category: API REST
 ---
 
-# COVID & MPOX Data API
+# API de Données COVID & MPOX
 
-Welcome to the official documentation for the COVID-19 and MPOX Data API. This API provides comprehensive access to epidemic data for research, analysis, and visualization purposes.
+Bienvenue dans la documentation officielle de l'API de données COVID-19 et MPOX. Cette API fournit un accès complet aux données épidémiques à des fins de recherche, d'analyse et de visualisation.
 
 <!-- ![API Banner](/static/api-banner.png) -->
 
-## API Features
+## Fonctionnalités de l'API
 
--   **Public & Protected Endpoints**: Access basic data without authentication or use protected endpoints for complete access
--   **Comprehensive Data**: Access COVID-19 and MPOX statistics from countries around the world
--   **RESTful Design**: Simple, intuitive API design with consistent patterns
--   **JSON Responses**: All data is returned in clean, structured JSON format
--   **TypeScript Support**: Built with TypeScript for type safety and better development experience
+-   **Points d'accès Publics & Protégés** : Accédez aux données de base sans authentification ou utilisez les points d'accès protégés pour un accès complet
+-   **Données Complètes** : Accédez aux statistiques COVID-19 et MPOX de pays du monde entier
+-   **Conception RESTful** : Design d'API simple et intuitif avec des modèles cohérents
+-   **Réponses JSON** : Toutes les données sont retournées dans un format JSON propre et structuré
+-   **Support TypeScript** : Construit avec TypeScript pour la sécurité des types et une meilleure expérience de développement
 
-## Quick Start
+## Démarrage Rapide
 
 ```bash
-# Install dependencies
+# Installer les dépendances
 pnpm install
 
-# Set environment variables
-# Create a .env file and copy the content of .env.example to it
-# Fill in the values for the environment variables
+# Configurer les variables d'environnement
+# Créer un fichier .env et copier le contenu de .env.example
+# Remplir les valeurs des variables d'environnement
 
-# Start the server
+# Démarrer le serveur
 pnpm run dev
 ```
 
-## API at a Glance
+## Aperçu de l'API
 
-| Category   | Public Endpoints | Protected Endpoints |
-| ---------- | ---------------- | ------------------- |
-| COVID-19   | 3 endpoints      | 4 endpoints         |
-| MPOX       | 1 endpoint       | 4 endpoints         |
-| Statistics | —                | 1 endpoint          |
+| Catégorie  | Points d'accès Publics | Points d'accès Protégés |
+| ---------- | ---------------------- | ----------------------- |
+| COVID-19   | 3 points d'accès      | 4 points d'accès       |
+| MPOX       | 1 point d'accès       | 4 points d'accès       |
+| Statistiques | —                    | 1 point d'accès        |
 
-## Documentation Sections
+## Sections de la Documentation
 
--   [Getting Started](/rest/getting-started/installation.md) - Installation and basic setup
--   [Authentication](/rest/getting-started/authentication.md) - How to authenticate with the API
--   [API Reference](/rest/api/overview.md) - Detailed API endpoint documentation
--   [Guides](/rest/guides/using-the-api.md) - Practical usage examples
+-   [Pour Commencer](/rest/getting-started/installation.md) - Installation et configuration de base
+-   [Authentification](/rest/getting-started/authentication.md) - Comment s'authentifier avec l'API
+-   [Référence API](/rest/api/overview.md) - Documentation détaillée des points d'accès API
+-   [Guides](/rest/guides/using-the-api.md) - Exemples pratiques d'utilisation
 
-## Live Demo
+## Démo en Direct
 
-Try the interactive API demo at [api-demo.yourdomain.com](https://api-demo.yourdomain.com)
+Essayez la démo interactive de l'API sur [api-demo.yourdomain.com](https://api-demo.yourdomain.com)
 
-## Support & Feedback
+## Support & Retour d'expérience
 
--   [GitHub Issues](https://github.com/yourusername/covid-mpox-api/issues)
--   [Email Support](mailto:api-support@yourdomain.com)
+-   [Issues GitHub](https://github.com/yourusername/covid-mpox-api/issues)
+-   [Support par Email](mailto:api-support@yourdomain.com)

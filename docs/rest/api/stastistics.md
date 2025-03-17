@@ -1,25 +1,25 @@
 ---
-label: Statistics Endpoints
+label: Points d'Accès Statistiques
 icon: graph
 order: 400
-category: REST API
+category: API REST
 ---
 
-# Statistics Endpoints
+# Points d'Accès Statistiques
 
-## Protected Endpoints
+## Points d'Accès Protégés
 
-These endpoints require authentication.
+Ces points d'accès nécessitent une authentification.
 
-### Get Statistics Summary
+### Obtenir le Résumé des Statistiques
 
-Returns summary statistics for both COVID and MPOX.
+Retourne les statistiques récapitulatives pour COVID et MPOX.
 
 ```
 GET /stats/summary
 ```
 
-#### Response
+#### Réponse
 
 ```json
 {
@@ -34,30 +34,30 @@ GET /stats/summary
 }
 ```
 
-This endpoint provides a high-level overview of the global situation for both diseases. It's particularly useful for dashboards and summary visualizations.
+Ce point d'accès fournit une vue d'ensemble de la situation mondiale pour les deux maladies. Il est particulièrement utile pour les tableaux de bord et les visualisations récapitulatives.
 
-## Understanding the Statistics
+## Comprendre les Statistiques
 
-The statistics endpoint aggregates data from the latest available date for all countries. This means:
+Le point d'accès statistiques agrège les données de la date la plus récente disponible pour tous les pays. Cela signifie que :
 
-1. The totals represent the sum of all country data from the most recent date in the database
-2. Some countries may have more recent data than others
-3. The numbers reflect the state of the database, not necessarily real-time global figures
+1. Les totaux représentent la somme des données de tous les pays à la date la plus récente dans la base de données
+2. Certains pays peuvent avoir des données plus récentes que d'autres
+3. Les chiffres reflètent l'état de la base de données, pas nécessairement les chiffres mondiaux en temps réel
 
-For the most accurate country-level statistics, use the specific COVID and MPOX endpoints.
+Pour les statistiques les plus précises au niveau des pays, utilisez les points d'accès spécifiques COVID et MPOX.
 
-## Using Statistics Data
+## Utilisation des Données Statistiques
 
-The statistics endpoint is ideal for:
+Le point d'accès statistiques est idéal pour :
 
-- Creating high-level dashboard visualizations
-- Comparing the relative impact of COVID-19 vs. MPOX
-- Monitoring global trends over time
+- Créer des visualisations de tableau de bord de haut niveau
+- Comparer l'impact relatif de COVID-19 vs MPOX
+- Surveiller les tendances mondiales dans le temps
 
-Example visualization using this data:
+Exemple de visualisation utilisant ces données :
 
 ```javascript
-// Simple chart comparing COVID vs MPOX cases
+// Graphique simple comparant les cas COVID vs MPOX
 function createComparisonChart(data) {
   const ctx = document.getElementById('comparison-chart').getContext('2d');
   const chart = new Chart(ctx, {
@@ -65,11 +65,11 @@ function createComparisonChart(data) {
     data: {
       labels: ['COVID-19', 'MPOX'],
       datasets: [{
-        label: 'Total Cases',
+        label: 'Total des Cas',
         data: [data.covid.total_cases, data.mpox.total_cases],
         backgroundColor: ['rgba(54, 162, 235, 0.5)', 'rgba(255, 159, 64, 0.5)']
       }, {
-        label: 'Total Deaths',
+        label: 'Total des Décès',
         data: [data.covid.total_deaths, data.mpox.total_deaths],
         backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(255, 205, 86, 0.5)']
       }]
@@ -84,7 +84,7 @@ function createComparisonChart(data) {
   });
 }
 
-// Fetch data and create chart
+// Récupérer les données et créer le graphique
 fetch('/api/stats/summary', {
   headers: {
     'Authorization': 'Bearer your-api-token'
@@ -94,8 +94,8 @@ fetch('/api/stats/summary', {
 .then(data => createComparisonChart(data));
 ```
 
-## Rate Limiting
+## Limitation du Taux
 
-The statistics endpoint has a higher rate limit than other endpoints due to its aggregated nature:
+Le point d'accès statistiques a une limite de taux plus élevée que les autres points d'accès en raison de sa nature agrégée :
 
-- 300 requests per hour per API token
+- 300 requêtes par heure par jeton API

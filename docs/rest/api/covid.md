@@ -1,25 +1,25 @@
 ---
-label: COVID Endpoints
+label: Points d'Accès COVID
 icon: virus
 order: 200
-category: REST API
+category: API REST
 ---
 
-# COVID-19 Data Endpoints
+# Points d'Accès des Données COVID-19
 
-## Public Endpoints
+## Points d'Accès Publics
 
-These endpoints can be accessed without authentication.
+Ces points d'accès peuvent être consultés sans authentification.
 
-### Get Latest COVID Data
+### Obtenir les Dernières Données COVID
 
-Returns the most recent COVID data entries (limited to 10 records).
+Retourne les entrées de données COVID les plus récentes (limité à 10 enregistrements).
 
 ```
 GET /covid/public/latest
 ```
 
-#### Response
+#### Réponse
 
 ```json
 [
@@ -35,31 +35,31 @@ GET /covid/public/latest
     "total_recovered": 25033817,
     "daily_recovered": 38170
   },
-  // Additional records...
+  // Enregistrements supplémentaires...
 ]
 ```
 
-### Get COVID Data by Country
+### Obtenir les Données COVID par Pays
 
-Returns COVID data for a specific country (limited to last 30 days).
+Retourne les données COVID pour un pays spécifique (limité aux 30 derniers jours).
 
 ```
 GET /covid/public/country/:country
 ```
 
-#### Parameters
+#### Paramètres
 
-| Name | In | Type | Required | Description |
-|------|----|----|----------|-------------|
-| country | path | string | Yes | Country name |
+| Nom | Dans | Type | Requis | Description |
+|-----|------|------|---------|-------------|
+| country | path | string | Oui | Nom du pays |
 
-#### Example
+#### Exemple
 
 ```
 GET /covid/public/country/United%20States
 ```
 
-#### Response
+#### Réponse
 
 ```json
 [
@@ -75,19 +75,19 @@ GET /covid/public/country/United%20States
     "total_recovered": 25033817,
     "daily_recovered": 38170
   },
-  // Additional records...
+  // Enregistrements supplémentaires...
 ]
 ```
 
-### Get COVID Global Totals
+### Obtenir les Totaux Mondiaux COVID
 
-Returns global COVID totals from the most recent data.
+Retourne les totaux mondiaux COVID des données les plus récentes.
 
 ```
 GET /covid/public/totals
 ```
 
-#### Response
+#### Réponse
 
 ```json
 {
@@ -97,32 +97,32 @@ GET /covid/public/totals
 }
 ```
 
-## Protected Endpoints
+## Points d'Accès Protégés
 
-These endpoints require authentication.
+Ces points d'accès nécessitent une authentification.
 
-### Get All COVID Data
+### Obtenir Toutes les Données COVID
 
-Returns COVID data with optional filtering by country.
+Retourne les données COVID avec filtrage optionnel par pays.
 
 ```
 GET /covid/data
 ```
 
-#### Parameters
+#### Paramètres
 
-| Name | In | Type | Required | Description |
-|------|----|----|----------|-------------|
-| country | query | string | No | Filter by country name |
-| limit | query | integer | No | Maximum number of records to return (default: 100) |
+| Nom | Dans | Type | Requis | Description |
+|-----|------|------|---------|-------------|
+| country | query | string | Non | Filtrer par nom de pays |
+| limit | query | integer | Non | Nombre maximum d'enregistrements à retourner (par défaut : 100) |
 
-#### Example
+#### Exemple
 
 ```
 GET /covid/data?country=Spain&limit=10
 ```
 
-#### Response
+#### Réponse
 
 ```json
 [
@@ -138,19 +138,19 @@ GET /covid/data?country=Spain&limit=10
     "total_recovered": 2373502,
     "daily_recovered": 3291
   },
-  // Additional records...
+  // Enregistrements supplémentaires...
 ]
 ```
 
-### Add New COVID Data
+### Ajouter de Nouvelles Données COVID
 
-Creates a new COVID data entry.
+Crée une nouvelle entrée de données COVID.
 
 ```
 POST /covid/data
 ```
 
-#### Request Body
+#### Corps de la Requête
 
 ```json
 {
@@ -166,30 +166,30 @@ POST /covid/data
 }
 ```
 
-#### Response
+#### Réponse
 
 ```json
 {
   "success": true,
-  "message": "Data added successfully"
+  "message": "Données ajoutées avec succès"
 }
 ```
 
-### Update COVID Data
+### Mettre à Jour les Données COVID
 
-Updates an existing COVID data entry by ID.
+Met à jour une entrée de données COVID existante par ID.
 
 ```
 PUT /covid/data/:id
 ```
 
-#### Parameters
+#### Paramètres
 
-| Name | In | Type | Required | Description |
-|------|----|----|----------|-------------|
-| id | path | integer | Yes | ID of the COVID data entry |
+| Nom | Dans | Type | Requis | Description |
+|-----|------|------|---------|-------------|
+| id | path | integer | Oui | ID de l'entrée de données COVID |
 
-#### Request Body
+#### Corps de la Requête
 
 ```json
 {
@@ -205,53 +205,53 @@ PUT /covid/data/:id
 }
 ```
 
-#### Response
+#### Réponse
 
 ```json
 {
   "success": true,
-  "message": "Data updated successfully"
+  "message": "Données mises à jour avec succès"
 }
 ```
 
-### Delete COVID Data
+### Supprimer les Données COVID
 
-Deletes a COVID data entry by ID.
+Supprime une entrée de données COVID par ID.
 
 ```
 DELETE /covid/data/:id
 ```
 
-#### Parameters
+#### Paramètres
 
-| Name | In | Type | Required | Description |
-|------|----|----|----------|-------------|
-| id | path | integer | Yes | ID of the COVID data entry |
+| Nom | Dans | Type | Requis | Description |
+|-----|------|------|---------|-------------|
+| id | path | integer | Oui | ID de l'entrée de données COVID |
 
-#### Response
+#### Réponse
 
 ```json
 {
   "success": true,
-  "message": "Data deleted successfully"
+  "message": "Données supprimées avec succès"
 }
 ```
 
-## Data Model
+## Modèle de Données
 
-### COVID Data Model
+### Modèle de Données COVID
 
 ```typescript
 interface CovidData {
-  id: number;            // Unique identifier
-  date: string;          // Date in YYYY-MM-DD format
-  country: string;       // Country name
-  total_cases: number;   // Total confirmed cases
-  new_cases: number;     // New cases on this date
-  active_cases: number;  // Currently active cases
-  total_deaths: number;  // Total deaths
-  new_deaths: number;    // New deaths on this date
-  total_recovered: number; // Total recovered cases
-  daily_recovered: number; // New recoveries on this date
+  id: number;            // Identifiant unique
+  date: string;          // Date au format AAAA-MM-JJ
+  country: string;       // Nom du pays
+  total_cases: number;   // Total des cas confirmés
+  new_cases: number;     // Nouveaux cas pour cette date
+  active_cases: number;  // Cas actifs actuels
+  total_deaths: number;  // Total des décès
+  new_deaths: number;    // Nouveaux décès pour cette date
+  total_recovered: number; // Total des cas récupérés
+  daily_recovered: number; // Nouveaux récupérés pour cette date
 }
 ```

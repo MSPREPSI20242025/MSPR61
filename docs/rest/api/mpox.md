@@ -1,25 +1,25 @@
 ---
-label: MPOX Endpoints
+label: Points d'Accès MPOX
 icon: shield
 order: 300
-category: REST API
+category: API REST
 ---
 
-# MPOX Data Endpoints
+# Points d'Accès des Données MPOX
 
-## Public Endpoints
+## Points d'Accès Publics
 
-These endpoints can be accessed without authentication.
+Ces points d'accès peuvent être consultés sans authentification.
 
-### Get MPOX Summary by Country
+### Obtenir le Résumé MPOX par Pays
 
-Returns MPOX summary data grouped by country.
+Retourne les données de résumé MPOX groupées par pays.
 
 ```
 GET /mpox/public/summary
 ```
 
-#### Response
+#### Réponse
 
 ```json
 [
@@ -31,36 +31,36 @@ GET /mpox/public/summary
     "country": "Brazil",
     "latest_cases": 10117
   },
-  // Additional records...
+  // Enregistrements supplémentaires...
 ]
 ```
 
-## Protected Endpoints
+## Points d'Accès Protégés
 
-These endpoints require authentication.
+Ces points d'accès nécessitent une authentification.
 
-### Get All MPOX Data
+### Obtenir Toutes les Données MPOX
 
-Returns MPOX data with optional filtering by country.
+Retourne les données MPOX avec filtrage optionnel par pays.
 
 ```
 GET /mpox/data
 ```
 
-#### Parameters
+#### Paramètres
 
-| Name | In | Type | Required | Description |
-|------|----|----|----------|-------------|
-| country | query | string | No | Filter by country name |
-| limit | query | integer | No | Maximum number of records to return (default: 100) |
+| Nom | Dans | Type | Requis | Description |
+|-----|------|------|---------|-------------|
+| country | query | string | Non | Filtrer par nom de pays |
+| limit | query | integer | Non | Nombre maximum d'enregistrements à retourner (par défaut : 100) |
 
-#### Example
+#### Exemple
 
 ```
 GET /mpox/data?country=Africa&limit=10
 ```
 
-#### Response
+#### Réponse
 
 ```json
 [
@@ -73,19 +73,19 @@ GET /mpox/data?country=Africa&limit=10
     "total_deaths": 2,
     "new_deaths": 0
   },
-  // Additional records...
+  // Enregistrements supplémentaires...
 ]
 ```
 
-### Add New MPOX Data
+### Ajouter de Nouvelles Données MPOX
 
-Creates a new MPOX data entry.
+Crée une nouvelle entrée de données MPOX.
 
 ```
 POST /mpox/data
 ```
 
-#### Request Body
+#### Corps de la Requête
 
 ```json
 {
@@ -98,30 +98,30 @@ POST /mpox/data
 }
 ```
 
-#### Response
+#### Réponse
 
 ```json
 {
   "success": true,
-  "message": "Data added successfully"
+  "message": "Données ajoutées avec succès"
 }
 ```
 
-### Update MPOX Data
+### Mettre à Jour les Données MPOX
 
-Updates an existing MPOX data entry by ID.
+Met à jour une entrée de données MPOX existante par ID.
 
 ```
 PUT /mpox/data/:id
 ```
 
-#### Parameters
+#### Paramètres
 
-| Name | In | Type | Required | Description |
-|------|----|----|----------|-------------|
-| id | path | integer | Yes | ID of the MPOX data entry |
+| Nom | Dans | Type | Requis | Description |
+|-----|------|------|---------|-------------|
+| id | path | integer | Oui | ID de l'entrée de données MPOX |
 
-#### Request Body
+#### Corps de la Requête
 
 ```json
 {
@@ -134,60 +134,60 @@ PUT /mpox/data/:id
 }
 ```
 
-#### Response
+#### Réponse
 
 ```json
 {
   "success": true,
-  "message": "Data updated successfully"
+  "message": "Données mises à jour avec succès"
 }
 ```
 
-### Delete MPOX Data
+### Supprimer les Données MPOX
 
-Deletes a MPOX data entry by ID.
+Supprime une entrée de données MPOX par ID.
 
 ```
 DELETE /mpox/data/:id
 ```
 
-#### Parameters
+#### Paramètres
 
-| Name | In | Type | Required | Description |
-|------|----|----|----------|-------------|
-| id | path | integer | Yes | ID of the MPOX data entry |
+| Nom | Dans | Type | Requis | Description |
+|-----|------|------|---------|-------------|
+| id | path | integer | Oui | ID de l'entrée de données MPOX |
 
-#### Response
+#### Réponse
 
 ```json
 {
   "success": true,
-  "message": "Data deleted successfully"
+  "message": "Données supprimées avec succès"
 }
 ```
 
-## Data Model
+## Modèle de Données
 
-### MPOX Data Model
+### Modèle de Données MPOX
 
 ```typescript
 interface MpoxData {
-  id: number;           // Unique identifier
-  date: string;         // Date in YYYY-MM-DD format
-  country: string;      // Country name
-  total_cases: number;  // Total confirmed cases
-  new_cases: number;    // New cases on this date
-  total_deaths: number; // Total deaths
-  new_deaths: number;   // New deaths on this date
+  id: number;           // Identifiant unique
+  date: string;         // Date au format AAAA-MM-JJ
+  country: string;      // Nom du pays
+  total_cases: number;  // Total des cas confirmés
+  new_cases: number;    // Nouveaux cas pour cette date
+  total_deaths: number; // Total des décès
+  new_deaths: number;   // Nouveaux décès pour cette date
 }
 ```
 
-## Notes on MPOX Data
+## Notes sur les Données MPOX
 
-The MPOX dataset differs from the COVID dataset in several important ways:
+Le jeu de données MPOX diffère du jeu de données COVID à plusieurs égards importants :
 
-1. **Coverage**: MPOX data is available for fewer countries compared to COVID data
-2. **Fields**: MPOX data does not include recovery statistics
-3. **Granularity**: MPOX data may be reported with less frequency than COVID data
+1. **Couverture** : Les données MPOX sont disponibles pour moins de pays que les données COVID
+2. **Champs** : Les données MPOX n'incluent pas de statistiques de guérison
+3. **Granularité** : Les données MPOX peuvent être rapportées avec moins de fréquence que les données COVID
 
-When integrating MPOX data into your applications, be aware of these differences and ensure your code handles them appropriately.
+Lors de l'intégration des données MPOX dans vos applications, tenez compte de ces différences et assurez-vous que votre code les gère de manière appropriée.

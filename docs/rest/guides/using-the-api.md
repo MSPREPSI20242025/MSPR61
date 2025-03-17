@@ -1,51 +1,51 @@
 ---
-label: Using the API
+label: Utilisation de l'API
 icon: code
 order: 100
-category: REST API
+category: API REST
 ---
 
-# Using the API
+# Utilisation de l'API
 
-This guide demonstrates how to interact with the COVID and MPOX Data API using various programming languages and tools.
+Ce guide montre comment interagir avec l'API de données COVID et MPOX en utilisant différents langages de programmation et outils.
 
-## Basic Usage Patterns
+## Modèles d'Utilisation de Base
 
-Regardless of the language or library you use, working with the API follows these basic patterns:
+Quel que soit le langage ou la bibliothèque que vous utilisez, l'utilisation de l'API suit ces modèles de base :
 
-1. For public endpoints, make a direct GET request
-2. For protected endpoints, include the bearer token in the Authorization header
-3. Parse the JSON response
-4. Handle any errors
+1. Pour les points d'accès publics, faites une requête GET directe
+2. Pour les points d'accès protégés, incluez le jeton bearer dans l'en-tête Authorization
+3. Analysez la réponse JSON
+4. Gérez les erreurs éventuelles
 
-## Example: Fetching COVID Data for a Country
+## Exemple : Récupération des Données COVID pour un Pays
 
-### Using curl
+### Utilisation de curl
 
 ```bash
-# Public endpoint - no authentication required
+# Point d'accès public - pas d'authentification requise
 curl -X GET "https://api.yourdomain.com/api/covid/public/country/United%20States"
 
-# Protected endpoint - authentication required
+# Point d'accès protégé - authentification requise
 curl -X GET "https://api.yourdomain.com/api/covid/data?country=United%20States" \
   -H "Authorization: Bearer your-api-token"
 ```
 
-### Using JavaScript (fetch)
+### Utilisation de JavaScript (fetch)
 
 ```javascript
-// Public endpoint
+// Point d'accès public
 fetch('https://api.yourdomain.com/api/covid/public/country/United%20States')
   .then(response => {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
     }
     return response.json();
   })
   .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
+  .catch(error => console.error('Erreur:', error));
 
-// Protected endpoint
+// Point d'accès protégé
 fetch('https://api.yourdomain.com/api/covid/data?country=United%20States', {
   headers: {
     'Authorization': 'Bearer your-api-token'
@@ -53,28 +53,28 @@ fetch('https://api.yourdomain.com/api/covid/data?country=United%20States', {
 })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
     }
     return response.json();
   })
   .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
+  .catch(error => console.error('Erreur:', error));
 ```
 
-### Using Python (requests)
+### Utilisation de Python (requests)
 
 ```python
 import requests
 
-# Public endpoint
+# Point d'accès public
 response = requests.get('https://api.yourdomain.com/api/covid/public/country/United%20States')
 if response.status_code == 200:
     data = response.json()
     print(data)
 else:
-    print(f"Error: {response.status_code}")
+    print(f"Erreur : {response.status_code}")
 
-# Protected endpoint
+# Point d'accès protégé
 headers = {'Authorization': 'Bearer your-api-token'}
 response = requests.get(
     'https://api.yourdomain.com/api/covid/data',
@@ -85,12 +85,12 @@ if response.status_code == 200:
     data = response.json()
     print(data)
 else:
-    print(f"Error: {response.status_code}")
+    print(f"Erreur : {response.status_code}")
 ```
 
-## Creating a New Record
+## Création d'un Nouveau Enregistrement
 
-### Using JavaScript (fetch)
+### Utilisation de JavaScript (fetch)
 
 ```javascript
 const newCovidData = {
@@ -115,15 +115,15 @@ fetch('https://api.yourdomain.com/api/covid/data', {
 })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
     }
     return response.json();
   })
   .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
+  .catch(error => console.error('Erreur:', error));
 ```
 
-### Using Python (requests)
+### Utilisation de Python (requests)
 
 ```python
 import requests
@@ -156,21 +156,21 @@ if response.status_code == 201:
     data = response.json()
     print(data)
 else:
-    print(f"Error: {response.status_code}")
+    print(f"Erreur : {response.status_code}")
     print(response.text)
 ```
 
-## Building a Simple Dashboard
+## Création d'un Tableau de Bord Simple
 
-Here's a complete example of building a simple COVID dashboard using HTML, CSS, and JavaScript:
+Voici un exemple complet de création d'un tableau de bord COVID simple utilisant HTML, CSS et JavaScript :
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COVID-19 Dashboard</title>
+    <title>Tableau de Bord COVID-19</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -219,30 +219,30 @@ Here's a complete example of building a simple COVID dashboard using HTML, CSS, 
 </head>
 <body>
     <div class="container">
-        <h1>COVID-19 Dashboard</h1>
+        <h1>Tableau de Bord COVID-19</h1>
         
         <div class="card">
-            <h2>Global Totals</h2>
+            <h2>Totaux Mondiaux</h2>
             <div class="stats" id="global-stats">
                 <div class="stat-card">
-                    <h3>Total Cases</h3>
-                    <div class="number" id="total-cases">Loading...</div>
+                    <h3>Total des Cas</h3>
+                    <div class="number" id="total-cases">Chargement...</div>
                 </div>
                 <div class="stat-card">
-                    <h3>Total Deaths</h3>
-                    <div class="number" id="total-deaths">Loading...</div>
+                    <h3>Total des Décès</h3>
+                    <div class="number" id="total-deaths">Chargement...</div>
                 </div>
                 <div class="stat-card">
-                    <h3>Total Recovered</h3>
-                    <div class="number" id="total-recovered">Loading...</div>
+                    <h3>Total des Guérisons</h3>
+                    <div class="number" id="total-recovered">Chargement...</div>
                 </div>
             </div>
         </div>
         
         <div class="card">
-            <h2>Country Data</h2>
+            <h2>Données par Pays</h2>
             <select id="country-selector">
-                <option value="">Select a country</option>
+                <option value="">Sélectionnez un pays</option>
             </select>
             <div class="chart-container">
                 <canvas id="cases-chart"></canvas>
