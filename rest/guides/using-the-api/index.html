@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.795544344425">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.795544989484">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=3.6.0.795544344425" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.6.0.795544989484" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.795544344425" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.795544989484" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.795544344425" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.795544344425" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.795544989484" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.795544989484" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -563,55 +563,55 @@ else:
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="common-error-handling">
+<doc-anchor-target id="gestion-des-erreurs-courantes">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#common-error-handling">#</doc-anchor-trigger>
-        <span>Common Error Handling</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gestion-des-erreurs-courantes">#</doc-anchor-trigger>
+        <span>Gestion des Erreurs Courantes</span>
     </h2>
 </doc-anchor-target>
-<p>Here&#x27;s how to handle common API errors:</p>
+<p>Voici comment gérer les erreurs courantes de l&#x27;API :</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">function fetchData(url) {
   return fetch(url)
     .then(response =&gt; {
       if (response.status === 401) {
-        throw new Error('Authentication required. Please check your API token.');
+        throw new Error('Authentification requise. Veuillez vérifier votre jeton API.');
       }
       if (response.status === 404) {
-        throw new Error('Resource not found. Please check the URL.');
+        throw new Error('Ressource non trouvée. Veuillez vérifier l\'URL.');
       }
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
       }
       return response.json();
     });
 }
 
-// Usage
+// Utilisation
 fetchData('https://api.yourdomain.com/api/covid/public/latest')
   .then(data =&gt; {
-    // Process data
+    // Traitement des données
     console.log(data);
   })
   .catch(error =&gt; {
-    // Display user-friendly error
-    console.error('Error:', error.message);
+    // Affichage de l'erreur de manière conviviale
+    console.error('Erreur:', error.message);
   });</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="rate-limiting-considerations">
+<doc-anchor-target id="considérations-sur-la-limitation-de-débit">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#rate-limiting-considerations">#</doc-anchor-trigger>
-        <span>Rate Limiting Considerations</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#considérations-sur-la-limitation-de-débit">#</doc-anchor-trigger>
+        <span>Considérations sur la Limitation de Débit</span>
     </h2>
 </doc-anchor-target>
-<p>The API implements rate limiting to ensure fair usage. If you exceed the rate limits, you&#x27;ll receive a <code v-pre>429 Too Many Requests</code> response.</p>
-<p>To handle rate limiting:</p>
+<p>L&#x27;API implémente une limitation de débit pour assurer une utilisation équitable. Si vous dépassez les limites de débit, vous recevrez une réponse <code v-pre>429 Too Many Requests</code>.</p>
+<p>Pour gérer la limitation de débit :</p>
 <ol>
-<li>Cache responses when possible</li>
-<li>Implement exponential backoff for retries</li>
-<li>Batch requests when fetching large amounts of data</li>
+<li>Mettez en cache les réponses lorsque c&#x27;est possible</li>
+<li>Implémentez un délai exponentiel pour les nouvelles tentatives</li>
+<li>Regroupez les requêtes lors de la récupération de grandes quantités de données</li>
 </ol>
-<p>Example rate limit handling:</p>
+<p>Exemple de gestion de la limitation de débit :</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">function fetchWithRetry(url, options = {}, maxRetries = 3) {
   return new Promise((resolve, reject) =&gt; {
@@ -619,19 +619,19 @@ fetchData('https://api.yourdomain.com/api/covid/public/latest')
       fetch(url, options)
         .then(response =&gt; {
           if (response.status === 429 &amp;&amp; retryCount &lt; maxRetries) {
-            // Get retry-after header, default to exponential backoff
+            // Récupération de l'en-tête retry-after, par défaut délai exponentiel
             const retryAfter = response.headers.get('Retry-After') || Math.pow(2, retryCount) * 1000;
-            console.log(`Rate limited. Retrying in ${retryAfter}ms...`);
+            console.log(`Limite de débit atteinte. Nouvelle tentative dans ${retryAfter}ms...`);
             setTimeout(() =&gt; attempt(retryCount + 1), retryAfter);
           } else if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
           } else {
             resolve(response.json());
           }
         })
         .catch(error =&gt; {
           if (retryCount &lt; maxRetries) {
-            console.log(`Error: ${error.message}. Retrying...`);
+            console.log(`Erreur : ${error.message}. Nouvelle tentative...`);
             setTimeout(() =&gt; attempt(retryCount + 1), Math.pow(2, retryCount) * 1000);
           } else {
             reject(error);
@@ -643,14 +643,14 @@ fetchData('https://api.yourdomain.com/api/covid/public/latest')
   });
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="next-steps">
+<doc-anchor-target id="prochaines-étapes">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#next-steps">#</doc-anchor-trigger>
-        <span>Next Steps</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#prochaines-étapes">#</doc-anchor-trigger>
+        <span>Prochaines Étapes</span>
     </h2>
 </doc-anchor-target>
 <ul>
-<li>Explore the full <a href="../../api/overview/">API Reference</a></li>
+<li>Explorez la <a href="../../api/overview/">Référence complète de l&#x27;API</a></li>
 </ul>
 
                                 
