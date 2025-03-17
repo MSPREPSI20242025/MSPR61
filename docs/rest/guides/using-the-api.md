@@ -361,50 +361,50 @@ Voici un exemple complet de création d'un tableau de bord COVID simple utilisan
 </html>
 ```
 
-## Common Error Handling
+## Gestion des Erreurs Courantes
 
-Here's how to handle common API errors:
+Voici comment gérer les erreurs courantes de l'API :
 
 ```javascript
 function fetchData(url) {
   return fetch(url)
     .then(response => {
       if (response.status === 401) {
-        throw new Error('Authentication required. Please check your API token.');
+        throw new Error('Authentification requise. Veuillez vérifier votre jeton API.');
       }
       if (response.status === 404) {
-        throw new Error('Resource not found. Please check the URL.');
+        throw new Error('Ressource non trouvée. Veuillez vérifier l\'URL.');
       }
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
       }
       return response.json();
     });
 }
 
-// Usage
+// Utilisation
 fetchData('https://api.yourdomain.com/api/covid/public/latest')
   .then(data => {
-    // Process data
+    // Traitement des données
     console.log(data);
   })
   .catch(error => {
-    // Display user-friendly error
-    console.error('Error:', error.message);
+    // Affichage de l'erreur de manière conviviale
+    console.error('Erreur:', error.message);
   });
 ```
 
-## Rate Limiting Considerations
+## Considérations sur la Limitation de Débit
 
-The API implements rate limiting to ensure fair usage. If you exceed the rate limits, you'll receive a `429 Too Many Requests` response.
+L'API implémente une limitation de débit pour assurer une utilisation équitable. Si vous dépassez les limites de débit, vous recevrez une réponse `429 Too Many Requests`.
 
-To handle rate limiting:
+Pour gérer la limitation de débit :
 
-1. Cache responses when possible
-2. Implement exponential backoff for retries
-3. Batch requests when fetching large amounts of data
+1. Mettez en cache les réponses lorsque c'est possible
+2. Implémentez un délai exponentiel pour les nouvelles tentatives
+3. Regroupez les requêtes lors de la récupération de grandes quantités de données
 
-Example rate limit handling:
+Exemple de gestion de la limitation de débit :
 
 ```javascript
 function fetchWithRetry(url, options = {}, maxRetries = 3) {
@@ -413,19 +413,19 @@ function fetchWithRetry(url, options = {}, maxRetries = 3) {
       fetch(url, options)
         .then(response => {
           if (response.status === 429 && retryCount < maxRetries) {
-            // Get retry-after header, default to exponential backoff
+            // Récupération de l'en-tête retry-after, par défaut délai exponentiel
             const retryAfter = response.headers.get('Retry-After') || Math.pow(2, retryCount) * 1000;
-            console.log(`Rate limited. Retrying in ${retryAfter}ms...`);
+            console.log(`Limite de débit atteinte. Nouvelle tentative dans ${retryAfter}ms...`);
             setTimeout(() => attempt(retryCount + 1), retryAfter);
           } else if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
           } else {
             resolve(response.json());
           }
         })
         .catch(error => {
           if (retryCount < maxRetries) {
-            console.log(`Error: ${error.message}. Retrying...`);
+            console.log(`Erreur : ${error.message}. Nouvelle tentative...`);
             setTimeout(() => attempt(retryCount + 1), Math.pow(2, retryCount) * 1000);
           } else {
             reject(error);
@@ -438,6 +438,6 @@ function fetchWithRetry(url, options = {}, maxRetries = 3) {
 }
 ```
 
-## Next Steps
+## Prochaines Étapes
 
-- Explore the full [API Reference](/rest/api/overview.md)
+- Explorez la [Référence complète de l'API](/rest/api/overview.md)

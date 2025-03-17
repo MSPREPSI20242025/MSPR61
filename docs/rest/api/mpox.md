@@ -31,7 +31,7 @@ GET /mpox/public/summary
     "country": "Brazil",
     "latest_cases": 10117
   },
-  // Enregistrements supplémentaires...
+  // Autres enregistrements...
 ]
 ```
 
@@ -73,7 +73,7 @@ GET /mpox/data?country=Africa&limit=10
     "total_deaths": 2,
     "new_deaths": 0
   },
-  // Enregistrements supplémentaires...
+  // Autres enregistrements...
 ]
 ```
 

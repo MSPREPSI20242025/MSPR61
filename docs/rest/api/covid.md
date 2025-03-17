@@ -248,10 +248,10 @@ interface CovidData {
   country: string;       // Nom du pays
   total_cases: number;   // Total des cas confirmés
   new_cases: number;     // Nouveaux cas pour cette date
-  active_cases: number;  // Cas actifs actuels
+  active_cases: number;  // Cas actifs
   total_deaths: number;  // Total des décès
   new_deaths: number;    // Nouveaux décès pour cette date
-  total_recovered: number; // Total des cas récupérés
-  daily_recovered: number; // Nouveaux récupérés pour cette date
+  total_recovered: number; // Total des guérisons
+  daily_recovered: number; // Guérisons journalières
 }
 ```
