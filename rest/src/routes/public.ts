@@ -4,6 +4,27 @@ import { PrismaClient } from "@prisma/client";
 const router = Router();
 const prisma = new PrismaClient();
 
+// Helper function to transform bigints to regular numbers
+const transformBigInts = (obj: any): any => {
+    if (typeof obj !== 'object' || obj === null) return obj;
+    
+    if (Array.isArray(obj)) {
+        return obj.map(item => transformBigInts(item));
+    }
+    
+    const result: any = {};
+    for (const [key, value] of Object.entries(obj)) {
+        if (typeof value === 'bigint') {
+            result[key] = Number(value);
+        } else if (typeof value === 'object' && value !== null) {
+            result[key] = transformBigInts(value);
+        } else {
+            result[key] = value;
+        }
+    }
+    return result;
+};
+
 // Public COVID data routes (unprotected)
 router.get(
     "/covid/public/latest",
@@ -15,7 +36,7 @@ router.get(
                     date: "desc",
                 },
             });
-            res.json(latestData);
+            res.json(transformBigInts(latestData));
         } catch (error) {
             res.status(500).json({ error: (error as Error).message });
         }
@@ -34,7 +55,7 @@ router.get(
       ORDER BY latest_cases DESC
       LIMIT 5
     `;
-            res.json(summary);
+            res.json(transformBigInts(summary));
         } catch (error) {
             res.status(500).json({ error: (error as Error).message });
         }
@@ -58,7 +79,7 @@ router.get(
                 take: 30, // Last 30 days
             });
 
-            res.json(data);
+            res.json(transformBigInts(data));
         } catch (error) {
             res.status(500).json({ error: (error as Error).message });
         }
@@ -97,7 +118,7 @@ router.get(
       WHERE date = ${latestDate.date}
     `;
 
-            res.json(totals[0]);
+            res.json(transformBigInts(totals[0]));
         } catch (error) {
             res.status(500).json({ error: (error as Error).message });
         }

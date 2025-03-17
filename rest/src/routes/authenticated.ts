@@ -5,6 +5,27 @@ import { authenticate } from "../middleware/middleware";
 const router = Router();
 const prisma = new PrismaClient();
 
+// Helper function to transform bigints to regular numbers
+const transformBigInts = (obj: any): any => {
+    if (typeof obj !== 'object' || obj === null) return obj;
+    
+    if (Array.isArray(obj)) {
+        return obj.map(item => transformBigInts(item));
+    }
+    
+    const result: any = {};
+    for (const [key, value] of Object.entries(obj)) {
+        if (typeof value === 'bigint') {
+            result[key] = Number(value);
+        } else if (typeof value === 'object' && value !== null) {
+            result[key] = transformBigInts(value);
+        } else {
+            result[key] = value;
+        }
+    }
+    return result;
+};
+
 // Protected COVID data routes
 router.get(
     "/covid/data",
@@ -21,7 +42,7 @@ router.get(
                 },
             });
 
-            res.json(data);
+            res.json(transformBigInts(data));
         } catch (error) {
             res.status(500).json({ error: (error as Error).message });
         }
@@ -44,7 +65,7 @@ router.get(
                 },
             });
 
-            res.json(data);
+            res.json(transformBigInts(data));
         } catch (error) {
             res.status(500).json({ error: (error as Error).message });
         }
@@ -71,10 +92,10 @@ router.get(
       WHERE date = (SELECT MAX(date) FROM "mpox_data")
     `;
 
-            res.json({
+            res.json(transformBigInts({
                 covid: covidStats[0],
                 mpox: mpoxStats[0],
-            });
+            }));
         } catch (error) {
             res.status(500).json({ error: (error as Error).message });
         }
