@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Epidemic Dashboard
+
+A modern dashboard for visualizing COVID-19 and MPOX epidemic data.
+
+## Features
+
+- Modern UI with dark mode support
+- Responsive design for all screen sizes
+- Interactive charts using Recharts
+- Country selection for data filtering
+- Time range selection for data visualization
+- Clean and consistent styling using Tailwind CSS
+- Type-safe API integration
+
+## Pages
+
+1. **Overview** - Shows key statistics and trend charts
+2. **COVID-19** - Detailed view of COVID-19 data with country selection
+3. **MPOX** - Detailed view of MPOX data with country selection
+4. **Compare** - Side-by-side comparison of COVID and MPOX data
+5. **All Data** - Comprehensive view with time range selection
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.0.0 or later
+- pnpm 8.0.0 or later
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```
+NEXT_PUBLIC_API_TOKEN=your-token-here
+```
+
+Replace `your-token-here` with your actual API token.
+
+### Running the Development Server
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm build
+```
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Recharts
+- SWR for data fetching
+- Axios for API requests
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Endpoints
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The dashboard uses the following API endpoints:
 
-## Deploy on Vercel
+- `/covid/public/latest` - Get latest COVID data
+- `/covid/public/country/{country}` - Get COVID data for a specific country
+- `/covid/public/totals` - Get global COVID totals
+- `/mpox/public/summary` - Get MPOX summary by country
+- `/stats/summary` - Get statistics summary (protected endpoint)
+- `/covid/data` - Get all COVID data (protected endpoint)
+- `/mpox/data` - Get all MPOX data (protected endpoint)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
