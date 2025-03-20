@@ -127,13 +127,13 @@ components:
             type: object
             properties:
                 total_cases:
-                    type: integer
+                    type: string
                     description: Total confirmed cases worldwide
                 total_deaths:
-                    type: integer
+                    type: string
                     description: Total deaths worldwide
                 total_recovered:
-                    type: integer
+                    type: string
                     description: Total recovered cases worldwide
             required:
                 - total_cases
