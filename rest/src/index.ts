@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import publicRoutes from "./routes/public";
 import authenticatedRoutes from "./routes/authenticated";
@@ -32,6 +33,7 @@ if (
 
 const port = Number(portEnv);
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/api", publicRoutes);
