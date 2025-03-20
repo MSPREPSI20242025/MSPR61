@@ -1,5 +1,8 @@
 ---
-title: "Documentation des filtres appliqués aux données"
+label: Documentation des filtres appliqués aux données
+icon: checklist
+order: 100
+category: Documentation
 ---
 
 # Documentation des filtres appliqués aux données
