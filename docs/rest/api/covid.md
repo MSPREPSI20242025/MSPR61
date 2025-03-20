@@ -23,19 +23,19 @@ GET /covid/public/latest
 
 ```json
 [
-  {
-    "id": 1,
-    "date": "2023-03-15",
-    "country": "United States",
-    "total_cases": 32580458,
-    "new_cases": 58480,
-    "active_cases": 6964527,
-    "total_deaths": 582114,
-    "new_deaths": 585,
-    "total_recovered": 25033817,
-    "daily_recovered": 38170
-  },
-  // Enregistrements supplémentaires...
+    {
+        "id": 1,
+        "date": "2023-03-15",
+        "country": "United States",
+        "total_cases": 32580458,
+        "new_cases": 58480,
+        "active_cases": 6964527,
+        "total_deaths": 582114,
+        "new_deaths": 585,
+        "total_recovered": 25033817,
+        "daily_recovered": 38170
+    }
+    // Enregistrements supplémentaires...
 ]
 ```
 
@@ -49,9 +49,9 @@ GET /covid/public/country/:country
 
 #### Paramètres
 
-| Nom | Dans | Type | Requis | Description |
-|-----|------|------|---------|-------------|
-| country | path | string | Oui | Nom du pays |
+| Nom     | Dans | Type   | Requis | Description |
+| ------- | ---- | ------ | ------ | ----------- |
+| country | path | string | Oui    | Nom du pays |
 
 #### Exemple
 
@@ -63,19 +63,19 @@ GET /covid/public/country/United%20States
 
 ```json
 [
-  {
-    "id": 1,
-    "date": "2023-03-15",
-    "country": "United States",
-    "total_cases": 32580458,
-    "new_cases": 58480,
-    "active_cases": 6964527,
-    "total_deaths": 582114,
-    "new_deaths": 585,
-    "total_recovered": 25033817,
-    "daily_recovered": 38170
-  },
-  // Enregistrements supplémentaires...
+    {
+        "id": 1,
+        "date": "2023-03-15",
+        "country": "United States",
+        "total_cases": 32580458,
+        "new_cases": 58480,
+        "active_cases": 6964527,
+        "total_deaths": 582114,
+        "new_deaths": 585,
+        "total_recovered": 25033817,
+        "daily_recovered": 38170
+    }
+    // Enregistrements supplémentaires...
 ]
 ```
 
@@ -91,9 +91,9 @@ GET /covid/public/totals
 
 ```json
 {
-  "total_cases": 128963254,
-  "total_deaths": 2819892,
-  "total_recovered": 104122331
+    "total_cases": "128963254",
+    "total_deaths": "2819892",
+    "total_recovered": "104122331"
 }
 ```
 
@@ -111,10 +111,10 @@ GET /covid/data
 
 #### Paramètres
 
-| Nom | Dans | Type | Requis | Description |
-|-----|------|------|---------|-------------|
-| country | query | string | Non | Filtrer par nom de pays |
-| limit | query | integer | Non | Nombre maximum d'enregistrements à retourner (par défaut : 100) |
+| Nom     | Dans  | Type    | Requis | Description                                                     |
+| ------- | ----- | ------- | ------ | --------------------------------------------------------------- |
+| country | query | string  | Non    | Filtrer par nom de pays                                         |
+| limit   | query | integer | Non    | Nombre maximum d'enregistrements à retourner (par défaut : 100) |
 
 #### Exemple
 
@@ -126,19 +126,19 @@ GET /covid/data?country=Spain&limit=10
 
 ```json
 [
-  {
-    "id": 42,
-    "date": "2023-03-15",
-    "country": "Spain",
-    "total_cases": 3247738,
-    "new_cases": 4838,
-    "active_cases": 798453,
-    "total_deaths": 75783,
-    "new_deaths": 35,
-    "total_recovered": 2373502,
-    "daily_recovered": 3291
-  },
-  // Enregistrements supplémentaires...
+    {
+        "id": 42,
+        "date": "2023-03-15",
+        "country": "Spain",
+        "total_cases": 3247738,
+        "new_cases": 4838,
+        "active_cases": 798453,
+        "total_deaths": 75783,
+        "new_deaths": 35,
+        "total_recovered": 2373502,
+        "daily_recovered": 3291
+    }
+    // Enregistrements supplémentaires...
 ]
 ```
 
@@ -154,15 +154,15 @@ POST /covid/data
 
 ```json
 {
-  "date": "2023-03-16",
-  "country": "United States",
-  "total_cases": 32638938,
-  "new_cases": 58480,
-  "active_cases": 7023007,
-  "total_deaths": 582699,
-  "new_deaths": 585,
-  "total_recovered": 25033232,
-  "daily_recovered": 38170
+    "date": "2023-03-16",
+    "country": "United States",
+    "total_cases": 32638938,
+    "new_cases": 58480,
+    "active_cases": 7023007,
+    "total_deaths": 582699,
+    "new_deaths": 585,
+    "total_recovered": 25033232,
+    "daily_recovered": 38170
 }
 ```
 
@@ -170,8 +170,8 @@ POST /covid/data
 
 ```json
 {
-  "success": true,
-  "message": "Données ajoutées avec succès"
+    "success": true,
+    "message": "Données ajoutées avec succès"
 }
 ```
 
@@ -185,23 +185,23 @@ PUT /covid/data/:id
 
 #### Paramètres
 
-| Nom | Dans | Type | Requis | Description |
-|-----|------|------|---------|-------------|
-| id | path | integer | Oui | ID de l'entrée de données COVID |
+| Nom | Dans | Type    | Requis | Description                     |
+| --- | ---- | ------- | ------ | ------------------------------- |
+| id  | path | integer | Oui    | ID de l'entrée de données COVID |
 
 #### Corps de la Requête
 
 ```json
 {
-  "date": "2023-03-16",
-  "country": "United States",
-  "total_cases": 32638938,
-  "new_cases": 58480,
-  "active_cases": 7023007,
-  "total_deaths": 582699,
-  "new_deaths": 585,
-  "total_recovered": 25033232,
-  "daily_recovered": 38170
+    "date": "2023-03-16",
+    "country": "United States",
+    "total_cases": 32638938,
+    "new_cases": 58480,
+    "active_cases": 7023007,
+    "total_deaths": 582699,
+    "new_deaths": 585,
+    "total_recovered": 25033232,
+    "daily_recovered": 38170
 }
 ```
 
@@ -209,8 +209,8 @@ PUT /covid/data/:id
 
 ```json
 {
-  "success": true,
-  "message": "Données mises à jour avec succès"
+    "success": true,
+    "message": "Données mises à jour avec succès"
 }
 ```
 
@@ -224,16 +224,16 @@ DELETE /covid/data/:id
 
 #### Paramètres
 
-| Nom | Dans | Type | Requis | Description |
-|-----|------|------|---------|-------------|
-| id | path | integer | Oui | ID de l'entrée de données COVID |
+| Nom | Dans | Type    | Requis | Description                     |
+| --- | ---- | ------- | ------ | ------------------------------- |
+| id  | path | integer | Oui    | ID de l'entrée de données COVID |
 
 #### Réponse
 
 ```json
 {
-  "success": true,
-  "message": "Données supprimées avec succès"
+    "success": true,
+    "message": "Données supprimées avec succès"
 }
 ```
 
@@ -243,15 +243,15 @@ DELETE /covid/data/:id
 
 ```typescript
 interface CovidData {
-  id: number;            // Identifiant unique
-  date: string;          // Date au format AAAA-MM-JJ
-  country: string;       // Nom du pays
-  total_cases: number;   // Total des cas confirmés
-  new_cases: number;     // Nouveaux cas pour cette date
-  active_cases: number;  // Cas actifs
-  total_deaths: number;  // Total des décès
-  new_deaths: number;    // Nouveaux décès pour cette date
-  total_recovered: number; // Total des guérisons
-  daily_recovered: number; // Guérisons journalières
+    id: number; // Identifiant unique
+    date: string; // Date au format AAAA-MM-JJ
+    country: string; // Nom du pays
+    total_cases: number; // Total des cas confirmés
+    new_cases: number; // Nouveaux cas pour cette date
+    active_cases: number; // Cas actifs
+    total_deaths: number; // Total des décès
+    new_deaths: number; // Nouveaux décès pour cette date
+    total_recovered: number; // Total des guérisons
+    daily_recovered: number; // Guérisons journalières
 }
 ```
